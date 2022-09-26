@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "title": "Graphic Design",
+        "description": "Amazing flyers, social media posts and brand representations that would make your brand stand out.",
+        "image" : "https://i.ibb.co/n06ShSD/service2.png"
+    },
+    {
+        "id": 2,
+        "title": "Web & Mobile Design",
+        "description": "We craft stunning and amazing web UI, using a well drafted UX to fit your product.",
+        "image" : "https://i.ibb.co/tCs1t9m/service1.png"
+    },
+    {
+        "id": 3,
+        "title": "Web development",
+        "description": "With well written codes, we build amazing apps for all platforms, mobile and web apps in general.",
+        "image" : "https://i.ibb.co/2hnhNw2/service3.png"
+    }
+]
+
+
