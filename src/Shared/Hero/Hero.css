@@ -1,0 +1,22 @@
+.curve-bg {
+    padding-bottom: 120px;
+    position: relative;
+}
+
+.curve-bg::before {
+
+    content: "";
+    background: #FBD062;
+    position: absolute;
+    left: 0;
+    top: 0px;
+    bottom: 60px;
+    right: 0;
+    -webkit-transform: skewY(-4deg);
+    -moz-transform: skewY(-4deg);
+    -ms-transform: skewY(-4deg);
+    -o-transform: skewY(-4deg);
+    transform: skewY(-4deg);
+    z-index: -111;
+    margin-top: -100px;
+}
