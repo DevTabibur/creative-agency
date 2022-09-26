@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
 import Logo from "../../Assets/Images/logo.png";
+import { Link } from "react-router-dom";
 
 const Header = ({ children }) => {
+  const [user] = useState(false);
+  console.log("user", user);
   const menu = (
     <>
       <li className="mx-2">
@@ -17,9 +20,16 @@ const Header = ({ children }) => {
       <li className="mx-2">
         <a>Contact Us</a>
       </li>
-      <button className="mx-2 btn btn-accent px-12 py-0">
-        <a>Login</a>
-      </button>
+
+      {user ? (
+        <button className="mx-2 btn btn-accent px-12 py-0">
+          <Link to="/dashboard">Dashboard</Link>
+        </button>
+      ) : (
+        <button className="mx-2 btn btn-accent px-12 py-0">
+          <a>Login</a>
+        </button>
+      )}
     </>
   );
   return (
@@ -31,10 +41,28 @@ const Header = ({ children }) => {
 
           <div className="w-full navbar bg-primary">
             <div className="container mx-auto px-4">
-              
-
+              <label
+                htmlFor="my-drawer-2"
+                className="btn btn-primary drawer-button lg:hidden"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  className="inline-block w-6 h-6 stroke-current"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h16M4 18h16"
+                  ></path>
+                </svg>
+              </label>
               <div className="flex-1 px-2 mx-2 relative w-full h-full">
-                <img className="w-24" src={Logo} alt="logo" />
+                <Link to="/">
+                  <img className="w-24" src={Logo} alt="logo" />
+                </Link>
               </div>
 
               <div className="flex-none hidden lg:block">
