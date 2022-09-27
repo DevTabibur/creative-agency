@@ -9,8 +9,11 @@
 3. React Router Dom (v6)
 4. React Hook Form
 5. Swiper Js
+6. Email JS
+7. Sweet Alert 2
 
 ## Short Description
+Customers can email me with contact section.
 
 **ADMIN**
 User's have to admin role to take action of admins.
