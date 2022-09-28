@@ -9,7 +9,7 @@ import Netflix from "../../Assets/Images/netflix.png";
 const Stat = () => {
   return (
     <div className="py-12">
-      <div class="container px-4  mx-auto">
+      <div className="container px-4  mx-auto">
         <div className="stats shadow-lg w-full">
           <div className="grid md:grid-cols-3 gap-4">
             <div className="stat">

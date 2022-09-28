@@ -9,6 +9,7 @@ import ServiceList from "./Pages/Dashboard/ServiceList";
 import AddServices from "./Pages/Dashboard/AddServices";
 import Users from "./Pages/Dashboard/Users";
 import PaymentDetails from "./Pages/Dashboard/PaymentDetails";
+import Register from "./Pages/Register/Register";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
 
         <Routes>
           <Route path="/login" element={<Login />}></Route>
+          <Route path="/register" element={<Register />}></Route>
           <Route path="/" element={<Home />}></Route>
 
           <Route path="/dashboard" element={<Dashboard/>}>

@@ -1,6 +1,7 @@
 import React from "react";
 import "./Login.css";
 import { useForm } from "react-hook-form";
+import {Link} from  'react-router-dom';
 
 const Login = () => {
   const {
@@ -101,7 +102,7 @@ const Login = () => {
             </div>
             <div className="divider mb-0 pb-0">OR</div>
             <div className="label-text-alt link link-hover my-2 font-semibold">
-              {/* <Link to="/register">Are you new here? Please register</Link> */}
+              <Link to="/register">Are you new here? Please register</Link>
             </div>
 
             <div

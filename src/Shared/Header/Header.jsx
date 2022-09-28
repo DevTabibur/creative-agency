@@ -22,13 +22,13 @@ const Header = ({ children }) => {
       </li>
 
       {user ? (
-        <button className="mx-2 btn btn-accent px-12 py-0">
+        <li className="mx-2 btn btn-accent px-12 py-0">
           <Link to="/dashboard">Dashboard</Link>
-        </button>
+        </li>
       ) : (
-        <button className="mx-2 btn btn-accent px-12 py-0">
-          <a>Login</a>
-        </button>
+        <li>
+          <Link className="btn btn-accent text-white px-12" to="/login">Login</Link>
+        </li>
       )}
     </>
   );

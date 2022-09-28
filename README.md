@@ -11,6 +11,8 @@
 5. Swiper Js
 6. Email JS
 7. Sweet Alert 2
+8. Firebase
+9. React Firebase hooks
 
 ## Short Description
 Customers can email me with contact section.
