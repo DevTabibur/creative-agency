@@ -34,7 +34,10 @@ const Contact = () => {
           e.target.reset()
         },
         (error) => {
-          console.log(error.text);
+          Swal.fire({
+            title: 'Mail was not Sent!',
+            icon: 'error',
+          })
         }
       );
   };
@@ -48,7 +51,7 @@ const Contact = () => {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="hero content">
             <div>
-              <h1 className="text-2xl font-serif font-semibold font-accent text-center mb-4 text-accent">
+              <h1 className="md:text-7xl font-serif font-semibold font-accent text-center mb-4 text-accent">
                 Let us handle your{" "}
                 <span className="text-secondary">project, professionally.</span>
               </h1>

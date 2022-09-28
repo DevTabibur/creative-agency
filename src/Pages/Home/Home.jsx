@@ -5,15 +5,17 @@ import SwiperCarousel from "../../Shared/Swiper/Swiper";
 import Contact from "../Contact/Contact";
 import Projects from "../Projects/Projects";
 import Services from "../Services/Services";
+import Testimonials from "../Testimonials/Testimonials";
 import "./Home.css";
 
 const Home = () => {
   return (
     <>
       <Hero />
-      {/* <Stat/> */}
+      <Stat/>
       <Services/>
       <Projects/>
+      <Testimonials/>
       <Contact/>
     </>
   );
