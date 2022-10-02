@@ -2,17 +2,25 @@ import React, { useState } from "react";
 import "./DashboardSidebar.css";
 import { Link, NavLink } from "react-router-dom";
 import useAdmin from "../../Hooks/useAdmin";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../Firebase/firebase.init";
+import Loader from "../Loader/Loader";
 
 const DashboardSidebar = ({ children }) => {
-  const admin = true;
-  const user = false;
-  console.log("admin", admin);
+  const [user, loading, error] = useAuthState(auth);
+  const [admin, adminLoading] = useAdmin(user);
+
+  if (loading || adminLoading) {
+    return <Loader />;
+  }
+
   const menu = (
     <>
-      {user && (
+      {/* user route */}
+      {!admin && (
         <>
           <li className="text-primary my-1 font-semibold font-serif">
-            <NavLink to="/dashboard/order">Give Order</NavLink>
+            <NavLink to="/dashboard">Give Order</NavLink>
           </li>
           <li className="text-primary my-1 font-semibold font-serif">
             <NavLink to="/dashboard/service-list">Service List</NavLink>
@@ -23,13 +31,14 @@ const DashboardSidebar = ({ children }) => {
         </>
       )}
 
+      {/* admin route */}
       {admin && (
         <>
           <li className="text-primary my-1 font-semibold font-serif">
             <NavLink to="/dashboard/add-services">Add Services</NavLink>
           </li>
           <li className="text-primary my-1 font-semibold font-serif">
-            <NavLink to="/dashboard/users">Users</NavLink>
+            <NavLink to="/dashboard">Users</NavLink>
           </li>
           <li className="text-primary my-1 font-semibold font-serif">
             <NavLink to="/dashboard/payment">Clear Payment</NavLink>

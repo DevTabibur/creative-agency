@@ -12,33 +12,41 @@ import PaymentDetails from "./Pages/Dashboard/PaymentDetails";
 import Register from "./Pages/Register/Register";
 import ManageServices from "./Pages/Dashboard/ManageServices";
 import ClientReview from "./Pages/Dashboard/ClientReview";
+import RequireAdmin from "./Authentication/RequireAdmin";
+import RequireUser from "./Authentication/RequireUser";
 
 function App() {
   return (
     <>
       <Header>
-
         <Routes>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/" element={<Home />}></Route>
 
-          <Route path="/dashboard" element={<Dashboard/>}>
-            {/* nested route */}
-            <Route path="order" element={<Order/>}/>
-            <Route path="review" element={<Review/>}/>
-            <Route path="service-list" element={<ServiceList/>}/>
-            {/* for admin */}
-            <Route path="add-services" element={<AddServices/>}/>
-            <Route path="users" element={<Users/>}/>
-            <Route path="payment" element={<PaymentDetails/>}/>
-            <Route path="manage-services" element={<ManageServices/>}/>
-            <Route path="client-review" element={<ClientReview/>}/>
+          <Route element={<RequireUser />}>
+            <Route path="/dashboard" element={<Dashboard />}>
+              {/* nested route */}
+              {/* by default Order component will render */}
+              <Route index element={<Order />} />
+              <Route path="review" element={<Review />} />
+              <Route path="service-list" element={<ServiceList />} />
+            </Route>
+          </Route>
 
+          {/* admin route */}
+          <Route element={<RequireAdmin />}>
+            <Route path="/dashboard" element={<Dashboard />}>
+              {/* for admin */}
+              <Route path="add-services" element={<AddServices />} />
+              {/* by default Users component will render */}
+              <Route index element={<Users />} />
+              <Route path="payment" element={<PaymentDetails />} />
+              <Route path="manage-services" element={<ManageServices />} />
+              <Route path="client-review" element={<ClientReview />} />
+            </Route>
           </Route>
         </Routes>
-
-
       </Header>
     </>
   );

@@ -15,10 +15,12 @@
 9. React Firebase hooks
 
 ## Short Description
+
 Customers can email me with contact section.
 
 **ADMIN**
 User's have to admin role to take action of admins.
+
 1. Can see the order list.
 2. Can make other users an Admin.
 3. Can see all Users.
@@ -34,4 +36,8 @@ User's have to login to take action of customers.
 1. Can order our services with price.
 2. Can review us ( according our project ).
 3. Can pay us with stripe.
-4. 
+4.
+
+# problem
+
+1. Jokhon user ke remove kore dibe admin, tokhon automatic shai user logout hoi jabe and takee again login kora lagbe...

@@ -1,35 +1,24 @@
 import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Swal from "sweetalert2";
 import auth from "../../Firebase/firebase.init";
+import useAdmin from "../../Hooks/useAdmin";
 import useUsers from "../../Hooks/useUsers";
+import Loader from "../../Shared/Loader/Loader";
 
 const Users = () => {
-
-  const [user] = useAuthState(auth);
-  console.log('name', user?.displayName)
+  const [user, loading, error] = useAuthState(auth);
+  // console.log("name", user?.displayName);
 
   const [users] = useUsers();
-  console.log('users', users)
-  const makeAdmin = (id) => {
-    alert();
-  };
+  // console.log("users", users);
 
-  const removeUser = (id) => {
-    const proceed = window.confirm("Are you want to remove this uer?");
-    if (proceed) {
-      const url = `https://localhost:5000/users/${id}`;
-      fetch(url, {
-        method: "DELETE",
-        headers: {
-          "content-type": "application/json",
-        },
-      })
-        .then((res) => res.json())
-        .then((data) => {
-          console.log(";data deleted", data);
-        });
-    }
-  };
+  const [admin, adminLoading] = useAdmin(user);
+
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <div className="container mx-auto px-4">
       <h1 className="text-2xl font-serif font-semibold font-accent text-center mb-12 text-accent">
@@ -51,7 +40,9 @@ const Users = () => {
               </tr>
             </thead>
             <tbody>
-              <ShowUser removeUser={removeUser} makeAdmin={makeAdmin} />
+              {users.map((user, idx) => (
+                <ShowUser key={idx} user={user} />
+              ))}
             </tbody>
           </table>
         </div>
@@ -62,27 +53,89 @@ const Users = () => {
 
 export default Users;
 
-const ShowUser = ({ removeUser, makeAdmin }) => {
+const ShowUser = ({ user }) => {
+  const { name, email, role } = user;
+
+  const makeAdmin = (email) => {
+    const proceed = window.confirm("Are you want to Make ADMIN?");
+    if (proceed) {
+      const url = `http://localhost:5000/user/admin/${email}`;
+      fetch(url, {
+        method: "PUT",
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+        .then((res) => {
+          if (res.status === 403) {
+            Swal.fire({
+              title: "Failed to make Admin",
+              icon: "error",
+            });
+          }
+          return res.json();
+        })
+        .then((data) => {
+          if (data.acknowledged) {
+            Swal.fire({
+              title: "Made an Admin",
+              icon: "success",
+            });
+          }
+        });
+    }
+  };
+
+  const removeUser = (id) => {
+    const proceed = window.confirm("Are you want to remove this user?");
+    if (proceed) {
+      const url = `http://localhost:5000/users/${id}`;
+      fetch(url, {
+        method: "DELETE",
+        headers: {
+          "content-type": "application/json",
+        },
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          if (data.acknowledged) {
+            Swal.fire({
+              title: "User Removed!",
+              icon: "success",
+            });
+          }
+        });
+    }
+  };
+
   return (
     <>
       <tr>
-        <td>Cy Ganderton</td>
-        <td>Quality Control Specialist</td>
+        <td>{name ? name : "Name not found"}</td>
+        <td>{email}</td>
         <td>
-          <button
-            onClick={() => removeUser("1")}
-            className="btn btn-sm btn-primary text-accent font-sans"
-          >
-            Remove User
-          </button>
+          {role !== "admin" ? (
+            <button
+              onClick={() => removeUser(user._id)}
+              className="btn btn-sm btn-primary text-accent font-sans"
+            >
+              Remove User
+            </button>
+          ) : (
+            <button className="btn btn-sm btn-secondary text-accent font-sans">
+              ADMIN
+            </button>
+          )}
         </td>
         <td>
-          <button
-            onClick={() => makeAdmin("1")}
-            className="btn btn-sm btn-secondary text-accent font-sans"
-          >
-            Make Admin
-          </button>
+          {role !== "admin" && (
+            <button
+              onClick={() => makeAdmin(email)}
+              className="btn btn-sm btn-secondary text-accent font-sans"
+            >
+              Make Admin
+            </button>
+          )}
         </td>
       </tr>
     </>
