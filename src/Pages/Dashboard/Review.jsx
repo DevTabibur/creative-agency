@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const Review = () => {
   const {
@@ -11,7 +12,7 @@ const Review = () => {
   const onSubmit = async (data, e) => {
     // console.log(data);
 
-    const url = `http://localhost:5000/dashboard/review`;
+    const url = `http://localhost:5000/review`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -21,7 +22,14 @@ const Review = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("post review successfully", data);
+        // console.log("post review successfully", data);
+        if (data.acknowledged) {
+          Swal.fire({
+            title: "Order Submitted !",
+            icon: "success",
+          });
+          e.target.reset();
+        }
       });
   };
   return (

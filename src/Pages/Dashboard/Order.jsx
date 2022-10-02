@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 const Order = () => {
   const {
@@ -9,9 +10,9 @@ const Order = () => {
     formState: { errors },
   } = useForm();
   const onSubmit = async (data, e) => {
-    console.log(data);
+    // console.log(data);
 
-    const url = `http://localhost:5000/dashboard/order`;
+    const url = `http://localhost:5000/order`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -21,7 +22,13 @@ const Order = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("post data successfully", data);
+        if (data.acknowledged) {
+          Swal.fire({
+            title: "Order Submitted !",
+            icon: "success",
+          });
+          e.target.reset();
+        }
       });
   };
   return (

@@ -14,7 +14,7 @@ const useUsers = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log("inside use users hooks", data);
+        // console.log("inside use users hooks", data);
         setUsers(data);
       });
   }, [users]);

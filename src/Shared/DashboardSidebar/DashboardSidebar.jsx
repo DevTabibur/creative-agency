@@ -4,8 +4,8 @@ import { Link, NavLink } from "react-router-dom";
 import useAdmin from "../../Hooks/useAdmin";
 
 const DashboardSidebar = ({ children }) => {
-  const admin = true;
-  const user = false;
+  const admin = false;
+  const user = true;
   console.log("admin", admin);
   const menu = (
     <>
