@@ -7,7 +7,7 @@ import Client3 from "../../Assets/Images/customer-3.png";
 const Testimonials = () => {
   return (
     <div>
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 py-24">
         <h1 className="text-2xl font-serif font-semibold font-accent text-center mb-12 text-accent">
           Clients<span className="text-secondary"> Feedback</span>
         </h1>

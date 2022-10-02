@@ -1,7 +1,15 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Login.css";
 import { useForm } from "react-hook-form";
-import {Link} from  'react-router-dom';
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
+import auth from "../../Firebase/firebase.init";
+import Loader from "../../Shared/Loader/Loader";
+import useToken from "../../Hooks/useToken";
 
 const Login = () => {
   const {
@@ -10,13 +18,50 @@ const Login = () => {
     watch,
     formState: { errors },
   } = useForm();
+  const [signInWithEmailAndPassword, signInUser, signInLoading, signInError] =
+    useSignInWithEmailAndPassword(auth);
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
+  const [sendPasswordResetEmail, resetLoading, resetError] =
+    useSendPasswordResetEmail(auth);
 
+  const [email, setEmail] = useState([]);
   const onSubmit = async (data, e) => {
-    console.log(data);
+    await signInWithEmailAndPassword(data.email, data.password);
+    setEmail(data.email);
   };
 
+  const navigate = useNavigate();
+  const location = useLocation();
+  let from = location.state?.from?.pathname || "/dashboard";
+
+  // giving token every user
+  const [token] = useToken(signInUser || googleUser);
+  useEffect(() => {
+    if (token) {
+      navigate(from, { replace: true });
+    }
+  }, [token, from, navigate]);
+
+  // for loading
+  if (signInLoading || googleLoading || resetLoading) {
+    return <Loader />;
+  }
+
+  // for error showing message
+  let showError;
+  if (signInError || googleError || resetError) {
+    showError = (
+      <small>
+        <p className="text-red-500">
+          {signInError?.message || googleError?.message || resetError?.message}
+        </p>
+      </small>
+    );
+  }
+
   return (
-    <div className="h-screen flex justify-center items-center">
+    <div className="h-screen bg-accent flex justify-center items-center">
       <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
         <div className="card-body">
           <h1 className="text-center text-2xl mb-4 font-semibold font-sans">
@@ -28,7 +73,6 @@ const Login = () => {
                 type="text"
                 placeholder="Email*"
                 className="input input-bordered"
-                // className="input input-bordered w-full max-w-xs"
                 {...register("email", {
                   required: {
                     value: true,
@@ -84,7 +128,7 @@ const Login = () => {
               <label
                 className="label"
                 onClick={async () => {
-                  //   await sendPasswordResetEmail(email);
+                  await sendPasswordResetEmail(email);
                 }}
               >
                 <p className="label-text-alt link link-hover font-semibold">
@@ -92,7 +136,7 @@ const Login = () => {
                 </p>
               </label>
             </div>
-            {/* {showError} */}
+            {showError}
             <div className="form-control mt-6">
               <input
                 className="btn btn-primary"
@@ -107,7 +151,7 @@ const Login = () => {
 
             <div
               className="btn btn-glass hover:btn-accent flex"
-              //   onClick={() => signInWithGoogle()}
+              onClick={() => signInWithGoogle()}
             >
               Continue with google
             </div>

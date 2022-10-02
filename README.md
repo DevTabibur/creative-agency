@@ -25,6 +25,7 @@ User's have to admin role to take action of admins.
 4. Can Upload Services.
 5. Can clear payment.
 6. Can remove logged-in user.
+7. Can manage all services like crud
 
 **USER**
 User's have to login to take action of customers.

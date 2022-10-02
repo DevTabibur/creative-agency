@@ -1,6 +1,15 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../Firebase/firebase.init";
+import useUsers from "../../Hooks/useUsers";
 
 const Users = () => {
+
+  const [user] = useAuthState(auth);
+  console.log('name', user?.displayName)
+
+  const [users] = useUsers();
+  console.log('users', users)
   const makeAdmin = (id) => {
     alert();
   };

@@ -10,6 +10,7 @@ import AddServices from "./Pages/Dashboard/AddServices";
 import Users from "./Pages/Dashboard/Users";
 import PaymentDetails from "./Pages/Dashboard/PaymentDetails";
 import Register from "./Pages/Register/Register";
+import ManageServices from "./Pages/Dashboard/ManageServices";
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
             <Route path="add-services" element={<AddServices/>}/>
             <Route path="users" element={<Users/>}/>
             <Route path="payment" element={<PaymentDetails/>}/>
+            <Route path="manage-services" element={<ManageServices/>}/>
 
           </Route>
         </Routes>

@@ -1,11 +1,21 @@
 import React, { useState } from "react";
 import "./Header.css";
 import Logo from "../../Assets/Images/logo.png";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../Firebase/firebase.init";
+import { signOut } from "firebase/auth";
 
 const Header = ({ children }) => {
-  const [user] = useState(false);
-  console.log("user", user);
+  const [user, loading, error] = useAuthState(auth);
+
+  const navigate = useNavigate();
+  const logOut = () => {
+    signOut(auth);
+    navigate("/")
+    localStorage.removeItem("accessToken");
+  };
+
   const menu = (
     <>
       <li className="mx-2">
@@ -22,12 +32,29 @@ const Header = ({ children }) => {
       </li>
 
       {user ? (
-        <li className="mx-2 btn btn-accent px-12 py-0">
-          <Link to="/dashboard">Dashboard</Link>
-        </li>
+        <div className="dropdown dropdown-end">
+          <label tabIndex={0} className="btn m-1">
+            {user?.displayName}
+          </label>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-4"
+          >
+            <li>
+              <Link className="text-accent" to="/dashboard">
+                Dashboard
+              </Link>
+            </li>
+            <li>
+              <a onClick={logOut}>Logout</a>
+            </li>
+          </ul>
+        </div>
       ) : (
-        <li>
-          <Link className="btn btn-accent text-white px-12" to="/login">Login</Link>
+        <li className="mx-2 btn btn-accent px-0 py-0">
+          <Link className=" text-white px-12" to="/login">
+            Login
+          </Link>
         </li>
       )}
     </>

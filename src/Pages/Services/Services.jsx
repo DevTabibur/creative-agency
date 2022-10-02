@@ -6,7 +6,7 @@ const Services = () => {
   const [services] = useServices();
   // console.log('first, services', services)
   return (
-    <div className="container mx-auto px-4 py-12">
+    <div className="container mx-auto px-4 py-24">
       <h1 className="text-2xl font-serif font-semibold font-accent text-center mb-12">
         Provide awesome <span className="text-secondary">services</span>
       </h1>
