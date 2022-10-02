@@ -4,8 +4,8 @@ import { Link, NavLink } from "react-router-dom";
 import useAdmin from "../../Hooks/useAdmin";
 
 const DashboardSidebar = ({ children }) => {
-  const admin = false;
-  const user = true;
+  const admin = true;
+  const user = false;
   console.log("admin", admin);
   const menu = (
     <>
@@ -36,6 +36,9 @@ const DashboardSidebar = ({ children }) => {
           </li>
           <li className="text-primary my-1 font-semibold font-serif">
             <NavLink to="/dashboard/manage-services">Manage Services</NavLink>
+          </li>
+          <li className="text-primary my-1 font-semibold font-serif">
+            <NavLink to="/dashboard/client-review">Client Review</NavLink>
           </li>
         </>
       )}

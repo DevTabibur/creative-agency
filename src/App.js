@@ -11,6 +11,7 @@ import Users from "./Pages/Dashboard/Users";
 import PaymentDetails from "./Pages/Dashboard/PaymentDetails";
 import Register from "./Pages/Register/Register";
 import ManageServices from "./Pages/Dashboard/ManageServices";
+import ClientReview from "./Pages/Dashboard/ClientReview";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route path="users" element={<Users/>}/>
             <Route path="payment" element={<PaymentDetails/>}/>
             <Route path="manage-services" element={<ManageServices/>}/>
+            <Route path="client-review" element={<ClientReview/>}/>
 
           </Route>
         </Routes>

@@ -25,7 +25,7 @@ const Review = () => {
         // console.log("post review successfully", data);
         if (data.acknowledged) {
           Swal.fire({
-            title: "Order Submitted !",
+            title: "Review Submitted !",
             icon: "success",
           });
           e.target.reset();
