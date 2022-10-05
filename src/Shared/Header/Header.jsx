@@ -9,6 +9,8 @@ import { signOut } from "firebase/auth";
 const Header = ({ children }) => {
   const [user, loading, error] = useAuthState(auth);
 
+  console.log('user', user)
+
   const navigate = useNavigate();
   const logOut = () => {
     signOut(auth);

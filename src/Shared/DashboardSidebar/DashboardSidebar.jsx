@@ -14,13 +14,14 @@ const DashboardSidebar = ({ children }) => {
     return <Loader />;
   }
 
+ 
   const menu = (
     <>
       {/* user route */}
       {!admin && (
         <>
           <li className="text-primary my-1 font-semibold font-serif">
-            <NavLink to="/dashboard">Give Order</NavLink>
+            <NavLink to="/dashboard/order">Give Order</NavLink>
           </li>
           <li className="text-primary my-1 font-semibold font-serif">
             <NavLink to="/dashboard/service-list">Service List</NavLink>
@@ -41,11 +42,12 @@ const DashboardSidebar = ({ children }) => {
       {admin && (
         <>
           <li className="text-primary my-1 font-semibold font-serif">
-            <NavLink to="/dashboard/add-services">Add Services</NavLink>
+            <NavLink to="/dashboard/users">Users</NavLink>
           </li>
           <li className="text-primary my-1 font-semibold font-serif">
-            <NavLink to="/dashboard">Users</NavLink>
+            <NavLink to="/dashboard/add-services">Add Services</NavLink>
           </li>
+
           <li className="text-primary my-1 font-semibold font-serif">
             <NavLink to="/dashboard/payment">Clear Payment</NavLink>
           </li>

@@ -16,6 +16,7 @@ import RequireAdmin from "./Authentication/RequireAdmin";
 import RequireUser from "./Authentication/RequireUser";
 import MyOrder from "./Pages/Dashboard/MyOrder";
 import PaymentHistory from "./Pages/Dashboard/PaymentHistory";
+import Welcome from "./Pages/Dashboard/Welcome";
 
 function App() {
   return (
@@ -30,7 +31,8 @@ function App() {
             <Route path="/dashboard" element={<Dashboard />}>
               {/* nested route */}
               {/* by default Order component will render */}
-              <Route index element={<Order />} />
+              <Route index element={<Welcome/>} />
+              <Route path="order" element={<Order />} />
               <Route path="review" element={<Review />} />
               <Route path="service-list" element={<ServiceList />} />
               <Route path="checkout" element={<MyOrder />} />
@@ -44,7 +46,7 @@ function App() {
               {/* for admin */}
               <Route path="add-services" element={<AddServices />} />
               {/* by default Users component will render */}
-              <Route index element={<Users />} />
+              <Route path="users" element={<Users />} />
               <Route path="payment" element={<PaymentDetails />} />
               <Route path="manage-services" element={<ManageServices />} />
               <Route path="client-review" element={<ClientReview />} />

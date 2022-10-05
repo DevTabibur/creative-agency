@@ -1,8 +1,11 @@
+import { signOut } from "firebase/auth";
 import React, { useEffect, useState } from "react";
+import auth from "../Firebase/firebase.init";
+import {useNavigate} from 'react-router-dom'
 
 const useUsers = () => {
   const [users, setUsers] = useState([]);
-
+const navigate = useNavigate()
   useEffect(() => {
     const url = `http://localhost:5000/users`;
     fetch(url, {
@@ -15,6 +18,11 @@ const useUsers = () => {
       .then((res) => res.json())
       .then((data) => {
         // console.log("inside use users hooks", data);
+        // if(data.message === 'forbidden'  || data.message === 'UnAuthorized'){
+        //   localStorage.removeItem("accessToken")
+        //   signOut(auth)
+        //   navigate("/login")
+        // }
         setUsers(data);
       });
   }, [users]);

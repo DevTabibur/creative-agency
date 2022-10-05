@@ -44,4 +44,5 @@ User's have to login to take action of customers.
 2. dashboard/ default route auto highlighted every time...
 3. displayName e register component e name push holeu, seta refresh na dile front e dekhai na..
 4. order component e 1 bar order shesh holeu, order button e click dile, sei sata abar order hoi... page refresh dile tai 1 bar 
-order korar pore r kora jai na..kintu refresh na dile 1 bar order deyar poreu, again and again order buttoon e click dile setai again order hoye jasse
+order korar pore r kora jai na..kintu refresh na dile 1 bar order deyar poreu, again and again order buttoon e click dile setai again order hoye jasse..
+5. admin login korle dashboard e users route e order component dekhai

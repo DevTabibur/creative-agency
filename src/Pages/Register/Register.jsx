@@ -40,7 +40,7 @@ const Register = () => {
   // dependency is must be given here.. otherwise it will not work..correctly
   useEffect(() => {
     if (token) {
-      navigate("/dashboard");
+      navigate("/");
     }
   }, [token, navigate]);
 
