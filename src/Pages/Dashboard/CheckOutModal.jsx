@@ -16,7 +16,7 @@ const CheckOutModal = ({  checkout }) => {
         <div className="modal-box relative bg-accent">
           <label
             htmlFor="checkout-modal"
-            className="btn btn-sm btn-circle absolute right-2 top-2"
+            className="btn btn-sm btn-primary btn-circle absolute right-2 top-2"
           >
             ✕
           </label>
@@ -26,7 +26,7 @@ const CheckOutModal = ({  checkout }) => {
           <div className="card flex-shrink-0 w-50 max-w-md shadow-2xl bg-base-100 mt-12">
             <div className="card-body">
               <Elements stripe={stripePromise}>
-                <CheckoutForm />
+                <CheckoutForm checkout={checkout}/>
               </Elements>
             </div>
           </div>
