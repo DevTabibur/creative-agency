@@ -7,6 +7,9 @@ const CheckoutForm = ({ checkout }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
+  const [success, setSuccess] = useState([]);
+  const [processing, setProcessing] = useState(false);
+  const [transactionID, setTransactionID] = useState([]);
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
@@ -48,6 +51,50 @@ const CheckoutForm = ({ checkout }) => {
     });
 
     setCardError(error?.message || "");
+    setSuccess("");
+    setProcessing(true);
+
+    // confirm card payment
+    const { paymentIntent, error: intentError } =
+      await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: card,
+          billing_details: {
+            name: name,
+            email: email,
+          },
+        },
+      });
+
+    if (intentError) {
+      setCardError(intentError?.message);
+      setProcessing(false);
+    } else {
+      // if payment is succeed
+      setCardError("");
+      // console.log("payment", paymentIntent);
+      setTransactionID(paymentIntent.id);
+      setSuccess("Your payment is completed");
+
+      // PATCH => store payment on database
+      const payment = {
+        serviceID: _id,
+        transactionID: paymentIntent.id,
+      };
+      const url = `http://localhost:5000/order/${_id}`;
+      fetch(url, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          // authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(payment),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setProcessing(false);
+        });
+    }
   };
   return (
     <>
@@ -78,6 +125,14 @@ const CheckoutForm = ({ checkout }) => {
       </form>
       {cardError && (
         <p className="text-red-500 text-sm font-serif">{cardError}</p>
+      )}
+      {success && (
+        <div>
+          <p className="text-green-500 text-sm font-serif">{success}</p>
+          <p className="text-orange-500 text-sm font-serif">
+            Your transactionID : {transactionID}
+          </p>
+        </div>
       )}
     </>
   );

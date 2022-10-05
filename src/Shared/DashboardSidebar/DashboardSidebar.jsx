@@ -31,6 +31,9 @@ const DashboardSidebar = ({ children }) => {
           <li className="text-primary my-1 font-semibold font-serif">
             <NavLink to="/dashboard/checkout">Checkout</NavLink>
           </li>
+          <li className="text-primary my-1 font-semibold font-serif">
+            <NavLink to="/dashboard/payment-history">Payment History</NavLink>
+          </li>
         </>
       )}
 

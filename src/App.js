@@ -15,6 +15,7 @@ import ClientReview from "./Pages/Dashboard/ClientReview";
 import RequireAdmin from "./Authentication/RequireAdmin";
 import RequireUser from "./Authentication/RequireUser";
 import MyOrder from "./Pages/Dashboard/MyOrder";
+import PaymentHistory from "./Pages/Dashboard/PaymentHistory";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
               <Route path="review" element={<Review />} />
               <Route path="service-list" element={<ServiceList />} />
               <Route path="checkout" element={<MyOrder />} />
+              <Route path="payment-history" element={<PaymentHistory />} />
             </Route>
           </Route>
 
