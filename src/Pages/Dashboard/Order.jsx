@@ -1,8 +1,11 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
+import auth from "../../Firebase/firebase.init";
 
 const Order = () => {
+  const [user] = useAuthState(auth);
   const {
     register,
     handleSubmit,
@@ -27,8 +30,8 @@ const Order = () => {
             title: "Order Submitted !",
             icon: "success",
           });
-          e.target.reset();
         }
+        e.target.reset();
       });
   };
   return (
@@ -43,31 +46,11 @@ const Order = () => {
             <div className="form-control w-full">
               <input
                 type="text"
+                defaultValue={user?.email}
                 placeholder="Your Email address*"
                 className="input input-bordered input-secondary w-full font-mono"
-                {...register("email", {
-                  required: {
-                    value: true,
-                    message: "Email is Required",
-                  },
-                  pattern: {
-                    value: /\S+@\S+\.\S+/,
-                    message: "Invalid Email",
-                  },
-                })}
+                {...register("email")}
               />
-              <label className="label my-1 py-0">
-                {errors.email?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
-                    {errors.email.message}
-                  </span>
-                )}
-                {errors.email?.type === "pattern" && (
-                  <span className="label-text-alt text-red-500 font-mono">
-                    {errors.email.message}
-                  </span>
-                )}
-              </label>
             </div>
 
             {/* name / company name */}
@@ -186,7 +169,7 @@ const Order = () => {
           </div>
           <div className="form-control w-full">
             <input
-              className="btn btn-primary text-secondary mt-6 font-serif font-semibold"
+              className="btn btn-accent text-primary mt-6 font-serif font-semibold"
               type="submit"
               value="ORDER"
             />

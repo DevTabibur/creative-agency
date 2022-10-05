@@ -22,16 +22,17 @@ const Services = () => {
 export default Services;
 
 const ShowServices = ({ service }) => {
-  const { title, description, image } = service;
+  const { serviceName, projectDetails, image, price } = service;
   return (
     <>
       <div className="card w-full shadow-xl border rounded-none">
           <div className="relative w-full">
-          <img className="my-4 w-24 mx-auto" src={image} alt="dynamic_image" />
+          <img className="p-4 rounded-lg w-full mx-auto" src={image} alt="dynamic_image" />
           </div>
         <div className="card-body justify-center items-center">
-          <h2 className="card-title font-serif font-accent">{title}</h2>
-          <p className="text-md font-serif text-center">{description}</p>
+          <h2 className="card-title font-serif font-accent">{serviceName}</h2>
+          <p><small>Price: ${price}</small></p>
+          <p className="text-md font-serif text-center">{projectDetails.slice(0, 50)}</p>
         </div>
       </div>
     </>

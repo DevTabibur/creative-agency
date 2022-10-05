@@ -28,6 +28,9 @@ const DashboardSidebar = ({ children }) => {
           <li className="text-primary my-1 font-semibold font-serif">
             <NavLink to="/dashboard/review">Review</NavLink>
           </li>
+          <li className="text-primary my-1 font-semibold font-serif">
+            <NavLink to="/dashboard/checkout">Checkout</NavLink>
+          </li>
         </>
       )}
 
