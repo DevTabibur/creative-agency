@@ -18,22 +18,32 @@ const PaymentHistory = () => {
 
   return (
     <>
-      <div className="overflow-x-auto">
-        <table className="table w-full">
-          <thead>
-            <tr>
-              <th>Email</th>
-              <th>Service Name</th>
-              <th>Transaction ID</th>
-              <th>Price</th>
-            </tr>
-          </thead>
-          <tbody>
-            {filterEmailData.map((history, idx) => (
-              <ShowPaymentHistory history={history} key={idx} />
-            ))}
-          </tbody>
-        </table>
+      <div className="container mx-auto px-4">
+        <h1 className="text-2xl font-serif font-semibold font-accent text-center mb-12 text-accent">
+          Completed Payment{" "}
+          <span className="text-secondary">
+            {" "}
+            History ( {filterEmailData.length} )
+          </span>
+        </h1>
+
+        <div className="overflow-x-auto">
+          <table className="table w-full">
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Service Name</th>
+                <th>Transaction ID</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+            <tbody>
+              {filterEmailData.map((history, idx) => (
+                <ShowPaymentHistory history={history} key={idx} />
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </>
   );
@@ -41,13 +51,11 @@ const PaymentHistory = () => {
 
 export default PaymentHistory;
 
-const ShowPaymentHistory = ({history, idx}) => {
-    console.log('history', history);
-    const {_id, paid, price, serviceName, transactionId, email } = history;
+const ShowPaymentHistory = ({ history }) => {
+  const { _id, paid, price, serviceName, transactionId, email } = history;
   return (
     <>
       <tr>
-        
         <td>{email}</td>
         <td>{serviceName}</td>
         <td>{transactionId}</td>
