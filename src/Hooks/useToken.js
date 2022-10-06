@@ -14,7 +14,7 @@ const useToken = (user) => {
     const currentUser = { email: email, name: name };
 
     if (email) {
-      const url = `http://localhost:5000/users/${email}`;
+      const url = `https://creative-agency-server.onrender.com/users/${email}`;
       fetch(url, {
         method: "PUT",
         headers: {

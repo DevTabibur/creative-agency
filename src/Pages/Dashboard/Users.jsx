@@ -59,7 +59,7 @@ const ShowUser = ({ user }) => {
   const makeAdmin = (email) => {
     const proceed = window.confirm("Are you want to Make ADMIN?");
     if (proceed) {
-      const url = `http://localhost:5000/user/admin/${email}`;
+      const url = `https://creative-agency-server.onrender.com/user/admin/${email}`;
       fetch(url, {
         method: "PUT",
         headers: {
@@ -90,7 +90,7 @@ const ShowUser = ({ user }) => {
   const removeUser = (id) => {
     const proceed = window.confirm("Are you want to remove this user?");
     if (proceed) {
-      const url = `http://localhost:5000/users/${id}`;
+      const url = `https://creative-agency-server.onrender.com/users/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {

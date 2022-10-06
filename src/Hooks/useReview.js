@@ -8,7 +8,7 @@ const useReview = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const url = `http://localhost:5000/review`;
+    const url = `https://creative-agency-server.onrender.com/review`;
     fetch(url, {
       method: "GET",
       headers: {

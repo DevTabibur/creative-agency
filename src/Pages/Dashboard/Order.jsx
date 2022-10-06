@@ -15,7 +15,7 @@ const Order = () => {
   const onSubmit = async (data, e) => {
     // console.log(data);
 
-    const url = `http://localhost:5000/order`;
+    const url = `https://creative-agency-server.onrender.com/order`;
     fetch(url, {
       method: "POST",
       headers: {

@@ -12,7 +12,7 @@ const Review = () => {
   const onSubmit = async (data, e) => {
     // console.log(data);
 
-    const url = `http://localhost:5000/review`;
+    const url = `https://creative-agency-server.onrender.com/review`;
     fetch(url, {
       method: "POST",
       headers: {

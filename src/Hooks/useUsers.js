@@ -7,7 +7,7 @@ const useUsers = () => {
   const [users, setUsers] = useState([]);
   const navigate = useNavigate();
   useEffect(() => {
-    const url = `http://localhost:5000/users`;
+    const url = `https://creative-agency-server.onrender.com/users`;
     fetch(url, {
       method: "GET",
       headers: {

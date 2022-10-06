@@ -19,7 +19,7 @@ const ShowMyOrder = ({ order, setCheckout }) => {
   const cancelOrder = (id) => {
     const proceed = window.confirm("Are you want to Cancel Your Order?");
     if (proceed) {
-      const url = `http://localhost:5000/order/${id}`;
+      const url = `https://creative-agency-server.onrender.com/order/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {

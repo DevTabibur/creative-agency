@@ -4,7 +4,7 @@ const useOrder = () => {
   const [orders, setOrders] = useState([]);
 
   useEffect(() => {
-    const url = `http://localhost:5000/order`;
+    const url = `https://creative-agency-server.onrender.com/order`;
     fetch(url, {
       method: "GET",
       headers: {

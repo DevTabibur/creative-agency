@@ -11,7 +11,7 @@ const AddServices = () => {
   } = useForm();
 
   const onSubmit = async (data, e) => {
-    const url = `http://localhost:5000/services`;
+    const url = `https://creative-agency-server.onrender.com/services`;
     fetch(url, {
       method: "POST",
       headers: {

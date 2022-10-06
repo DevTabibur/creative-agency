@@ -10,7 +10,7 @@ const navigate = useNavigate()
   useEffect(() => {
     const email = user?.email;
     if (email) {
-      const url = `http://localhost:5000/admin/${email}`;
+      const url = `https://creative-agency-server.onrender.com/admin/${email}`;
       fetch(url, {
         method: "GET",
         headers: {

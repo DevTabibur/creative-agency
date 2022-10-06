@@ -13,7 +13,7 @@ const CheckoutForm = ({ checkout }) => {
   const [clientSecret, setClientSecret] = useState("");
 
   useEffect(() => {
-    const url = `http://localhost:5000/create-payment-intent`;
+    const url = `https://creative-agency-server.onrender.com/create-payment-intent`;
     fetch(url, {
       method: "POST",
       headers: {
@@ -81,7 +81,7 @@ const CheckoutForm = ({ checkout }) => {
         serviceID: _id,
         transactionID: paymentIntent.id,
       };
-      const url = `http://localhost:5000/order/${_id}`;
+      const url = `https://creative-agency-server.onrender.com/order/${_id}`;
       fetch(url, {
         method: "PATCH",
         headers: {

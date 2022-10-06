@@ -8,7 +8,7 @@ const ClientReview = () => {
   const handleDelete = (id) => {
     const proceed = window.confirm("Are you want to DELETE?");
     if (proceed) {
-      const url = `http://localhost:5000/review/${id}`;
+      const url = `https://creative-agency-server.onrender.com/review/${id}`;
       fetch(url, {
         method: "DELETE",
         headers: {
