@@ -17,6 +17,7 @@ import RequireUser from "./Authentication/RequireUser";
 import MyOrder from "./Pages/Dashboard/MyOrder";
 import PaymentHistory from "./Pages/Dashboard/PaymentHistory";
 import Welcome from "./Pages/Dashboard/Welcome";
+import NotFound from "./Pages/NotFound/NotFound";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/register" element={<Register />}></Route>
           <Route path="/" element={<Home />}></Route>
           <Route path="/home" element={<Home />}></Route>
+          <Route path="*" element={<NotFound />}></Route>
 
           <Route element={<RequireUser />}>
             <Route path="/dashboard" element={<Dashboard />}>
