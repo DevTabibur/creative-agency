@@ -13,10 +13,10 @@
 7. Sweet Alert 2
 8. Firebase
 9. React Firebase hooks
+10. JWT Token
 
 ## Short Description
-
-Customers can email me with contact section.All API is secure with JWT Token.
+Creative agency is a landing page, provide us with many services. It has admin and user dashboard. User can rate us, pay us, order us and also cancel their order. Admin can make anyone admin, remove user, remove ratings, etc. Customers can email me with contact section.All API is secure with JWT Token.
 
 **ADMIN**
 User's have to admin role to take action of admins.
@@ -41,11 +41,6 @@ Please Login with any account for users dashboard.
 1. Can order our services with price.
 2. Can review us ( according our project ).
 3. Can pay us with stripe.
-4.
 
-# problem
 
-1. Jokhon user ke remove kore dibe admin, tokhon automatic shai user logout hoi jabe and takee again login kora lagbe...
-3. displayName e register component e name push holeu, seta refresh na dile front e dekhai na..
-4. useServices hook e authorization and verifyJWT dile, home page e services.map ta error disse... taile ki "/services" route ta verifyJWT dibo na?
 

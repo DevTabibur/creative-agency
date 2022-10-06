@@ -27,12 +27,12 @@ const navigate = useNavigate()
           return res.json()
         })
         .then((data) => {
-          console.log("check admin hooks inside", data);
+          // console.log("check admin hooks inside", data);
           setAdmin(data.admin);
           setAdminLoading(false);
         });
     }
-  }, [user]);
+  }, [user, navigate]);
   return [admin, adminLoading];
 };
 

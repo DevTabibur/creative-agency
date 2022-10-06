@@ -10,7 +10,6 @@ const RequireAdmin = () => {
   const [user, loading] = useAuthState(auth);
   const [admin, adminLoading] = useAdmin(user);
 
-  console.log('RequireAdmin', admin)
 
   const location = useLocation();
   if (loading || adminLoading) {
