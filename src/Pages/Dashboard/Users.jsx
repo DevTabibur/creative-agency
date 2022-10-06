@@ -64,6 +64,7 @@ const ShowUser = ({ user }) => {
         method: "PUT",
         headers: {
           "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
       })
         .then((res) => {
@@ -94,6 +95,7 @@ const ShowUser = ({ user }) => {
         method: "DELETE",
         headers: {
           "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
       })
         .then((res) => res.json())

@@ -52,12 +52,16 @@ const ShowServices = ({ service, handleDelete }) => {
   return (
     <>
       <div className="card w-full bg-base-100 shadow-xl">
-        <figure>
-          <img src={image} alt="Service_image" />
-        </figure>
+      <div className="relative w-full">
+          <img
+            className="p-4 rounded-lg w-28 text-center mx-auto"
+            src={image}
+            alt="dynamic_image"
+          />
+        </div>
         <div className="card-body">
           <h2 className="card-title">{serviceName}</h2>
-          <p>{projectDetails.slice(0, 60)}</p>
+          <p>{projectDetails}</p>
           <div className="card-actions justify-end">
             <button
               className="btn btn-sm btn-secondary font-semibold font-serif"

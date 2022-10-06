@@ -25,7 +25,7 @@ const Testimonials = () => {
                 <p className="font-semibold  text-accent">CEO, Manpol</p>
               </div>
             </div>
-            <p className="font-serif font-thin mt-4">
+            <p className="font-serif font-thin mt-4 text-gray-500">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus
               commodo ipsum duis laoreet maecenas. Feugiat{" "}
             </p>
@@ -43,7 +43,7 @@ const Testimonials = () => {
                 <p className="font-semibold  text-accent">CEO, Manpol</p>
               </div>
             </div>
-            <p className="font-serif font-thin mt-4">
+            <p className="font-serif font-thin mt-4 text-gray-500">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus
               commodo ipsum duis laoreet maecenas. Feugiat{" "}
             </p>
@@ -61,7 +61,7 @@ const Testimonials = () => {
                 <p className="font-semibold  text-accent">CEO, Manpol</p>
               </div>
             </div>
-            <p className="font-serif font-thin mt-4">
+            <p className="font-serif font-thin mt-4 text-gray-500">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus
               commodo ipsum duis laoreet maecenas. Feugiat{" "}
             </p>

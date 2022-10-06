@@ -16,10 +16,13 @@
 
 ## Short Description
 
-Customers can email me with contact section.
+Customers can email me with contact section.All API is secure with JWT Token.
 
 **ADMIN**
 User's have to admin role to take action of admins.
+Please check admin dashboard and power through below this login info
+Admin Email: abc@gmail.com
+Admin Password : 123456
 
 1. Can see the order list.
 2. Can make other users an Admin.
@@ -33,6 +36,8 @@ User's have to admin role to take action of admins.
 **USER**
 User's have to login to take action of customers.
 
+Please Login with any account for users dashboard.
+
 1. Can order our services with price.
 2. Can review us ( according our project ).
 3. Can pay us with stripe.
@@ -41,8 +46,6 @@ User's have to login to take action of customers.
 # problem
 
 1. Jokhon user ke remove kore dibe admin, tokhon automatic shai user logout hoi jabe and takee again login kora lagbe...
-2. dashboard/ default route auto highlighted every time...
 3. displayName e register component e name push holeu, seta refresh na dile front e dekhai na..
-4. order component e 1 bar order shesh holeu, order button e click dile, sei sata abar order hoi... page refresh dile tai 1 bar 
-order korar pore r kora jai na..kintu refresh na dile 1 bar order deyar poreu, again and again order buttoon e click dile setai again order hoye jasse..
-5. admin login korle dashboard e users route e order component dekhai
+4. useServices hook e authorization and verifyJWT dile, home page e services.map ta error disse... taile ki "/services" route ta verifyJWT dibo na?
+

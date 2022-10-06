@@ -26,6 +26,7 @@ function App() {
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/" element={<Home />}></Route>
+          <Route path="/home" element={<Home />}></Route>
 
           <Route element={<RequireUser />}>
             <Route path="/dashboard" element={<Dashboard />}>
@@ -47,7 +48,6 @@ function App() {
               <Route path="add-services" element={<AddServices />} />
               {/* by default Users component will render */}
               <Route path="users" element={<Users />} />
-              <Route path="payment" element={<PaymentDetails />} />
               <Route path="manage-services" element={<ManageServices />} />
               <Route path="client-review" element={<ClientReview />} />
             </Route>

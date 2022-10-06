@@ -17,6 +17,7 @@ const Review = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(data),
     })
@@ -28,6 +29,7 @@ const Review = () => {
             title: "Review Submitted !",
             icon: "success",
           });
+          window.location.reload(true);
           e.target.reset();
         }
       });

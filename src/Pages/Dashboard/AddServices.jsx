@@ -9,6 +9,7 @@ const AddServices = () => {
     watch,
     formState: { errors },
   } = useForm();
+
   const onSubmit = async (data, e) => {
     const url = `http://localhost:5000/services`;
     fetch(url, {
@@ -20,11 +21,13 @@ const AddServices = () => {
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log("data", data);
         if (data.acknowledged) {
           Swal.fire({
             title: "Added another services!",
             icon: "success",
           });
+          window.location.reload(true);
           // clear form
           e.target.reset();
         }

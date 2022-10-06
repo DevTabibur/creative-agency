@@ -18,7 +18,7 @@ const CheckoutForm = ({ checkout }) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        // authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify({ price }),
     })
@@ -86,7 +86,7 @@ const CheckoutForm = ({ checkout }) => {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
-          // authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
         body: JSON.stringify(payment),
       })

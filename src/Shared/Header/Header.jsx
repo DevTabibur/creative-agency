@@ -5,62 +5,50 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../Firebase/firebase.init";
 import { signOut } from "firebase/auth";
+import Loader from "../Loader/Loader";
 
 const Header = ({ children }) => {
   const [user, loading, error] = useAuthState(auth);
 
-  console.log('user', user)
-
   const navigate = useNavigate();
   const logOut = () => {
     signOut(auth);
-    navigate("/")
+    navigate("/");
     localStorage.removeItem("accessToken");
   };
+  if (loading) {
+    return <Loader />;
+  }
 
   const menu = (
     <>
-      <li className="mx-2">
-        <a>Home</a>
-      </li>
-      <li className="mx-2">
-        <a>Our Portfolio</a>
-      </li>
-      <li className="mx-2">
-        <a>Our Team</a>
-      </li>
-      <li className="mx-2">
-        <a>Contact Us</a>
-      </li>
-
       {user ? (
-        <div className="dropdown dropdown-end">
-          <label tabIndex={0} className="btn m-1">
-            {user?.displayName}
-          </label>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 mt-4"
-          >
-            <li>
-              <Link className="text-accent" to="/dashboard">
-                Dashboard
-              </Link>
+        <>
+          <li className="mx-2 btn btn-accent px-0 py-0 rounded-md">
+            <Link className="text-primary font-semibold" to="/dashboard">
+              Dashboard
+            </Link>
+          </li>
+          {user?.displayName && (
+            <li className="mx-2 btn btn-accent px-0 py-0 rounded-md">
+              <p>{user?.displayName}</p>
             </li>
-            <li>
-              <a onClick={logOut}>Logout</a>
-            </li>
-          </ul>
-        </div>
+          )}
+
+          <li className="mx-2 btn btn-accent px-0 py-0 rounded-md">
+            <a onClick={logOut}>Logout</a>
+          </li>
+        </>
       ) : (
-        <li className="mx-2 btn btn-accent px-0 py-0">
-          <Link className=" text-white px-12" to="/login">
+        <li className="mx-2 btn btn-accent px-0 py-0 rounded-md">
+          <Link className=" text-primary px-12" to="/login">
             Login
           </Link>
         </li>
       )}
     </>
   );
+
   return (
     <>
       <div className="drawer drawer-end">

@@ -26,13 +26,18 @@ const ShowServices = ({ service }) => {
   return (
     <>
       <div className="card w-full shadow-xl border rounded-none">
-          <div className="relative w-full">
-          <img className="p-4 rounded-lg w-full mx-auto" src={image} alt="dynamic_image" />
-          </div>
+        <div className="relative w-full">
+          <img
+            className="p-4 rounded-lg w-28 text-center mx-auto"
+            src={image}
+            alt="dynamic_image"
+          />
+        </div>
         <div className="card-body justify-center items-center">
           <h2 className="card-title font-serif font-accent">{serviceName}</h2>
-          <p><small>Price: ${price}</small></p>
-          <p className="text-md font-serif text-center">{projectDetails.slice(0, 50)}</p>
+          <p className="text-md font-sans text-center text-gray-500">
+            {projectDetails.slice(0, 250)}...
+          </p>
         </div>
       </div>
     </>

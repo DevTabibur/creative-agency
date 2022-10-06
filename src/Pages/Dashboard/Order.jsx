@@ -20,6 +20,7 @@ const Order = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
       body: JSON.stringify(data),
     })
@@ -31,6 +32,7 @@ const Order = () => {
             icon: "success",
           });
         }
+        window.location.reload(true);
         e.target.reset();
       });
   };
@@ -149,7 +151,7 @@ const Order = () => {
             <div className="form-control w-full">
               <input
                 type="number"
-                placeholder="Price*"
+                placeholder="$ Price*"
                 className="input input-bordered input-secondary w-full font-mono"
                 {...register("price", {
                   required: {

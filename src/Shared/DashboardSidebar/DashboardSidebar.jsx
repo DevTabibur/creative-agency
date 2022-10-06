@@ -47,10 +47,6 @@ const DashboardSidebar = ({ children }) => {
           <li className="text-primary my-1 font-semibold font-serif">
             <NavLink to="/dashboard/add-services">Add Services</NavLink>
           </li>
-
-          <li className="text-primary my-1 font-semibold font-serif">
-            <NavLink to="/dashboard/payment">Clear Payment</NavLink>
-          </li>
           <li className="text-primary my-1 font-semibold font-serif">
             <NavLink to="/dashboard/manage-services">Manage Services</NavLink>
           </li>
