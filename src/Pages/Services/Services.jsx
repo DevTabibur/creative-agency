@@ -26,19 +26,16 @@ const Services = () => {
 export default Services;
 
 const ShowServices = ({ service }) => {
-  const [user] = useAuthState(auth)
+  const [user] = useAuthState(auth);
   const { _id, serviceName, projectDetails, image, price } = service;
   const navigate = useNavigate();
-  const handleOrder = (id) =>{
-    if(!user){
-      Swal.fire({
-        title: 'Please login first',
-        icon: 'error'
-      })
-    } else{
-      navigate(`/dashboard/order/${id}`)
+  const handleOrder = (id) => {
+    if (!user) {
+      navigate("/login");
+    } else {
+      navigate(`/dashboard/order/${id}`);
     }
-  }
+  };
   return (
     <>
       <div className="card w-full shadow-xl border rounded-none">
@@ -58,7 +55,12 @@ const ShowServices = ({ service }) => {
             Price : ${price}
           </p>
           <div className="card-actions justify-end">
-            <button className="btn btn-accent text-primary" onClick={() =>handleOrder(_id)}>Order Now</button>
+            <button
+              className="btn btn-accent text-primary"
+              onClick={() => handleOrder(_id)}
+            >
+              Order Now
+            </button>
           </div>
         </div>
       </div>

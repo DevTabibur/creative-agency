@@ -16,7 +16,7 @@ const Order = () => {
   const { id } = useParams();
   const [getService, setGetService] = useState([]);
   useEffect(() => {
-    const url = `http://localhost:5000/services/${id}`;
+    const url = `https://creative-agency-server.onrender.com/services/${id}`;
     fetch(url, {
       method: "GET",
       headers: {
