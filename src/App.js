@@ -35,7 +35,7 @@ function App() {
               {/* nested route */}
               {/* by default Order component will render */}
               <Route index element={<Welcome/>} />
-              <Route path="order" element={<Order />} />
+              <Route path="order/:id" element={<Order />} />
               <Route path="review" element={<Review />} />
               <Route path="service-list" element={<ServiceList />} />
               <Route path="checkout" element={<MyOrder />} />

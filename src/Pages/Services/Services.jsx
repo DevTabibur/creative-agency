@@ -2,6 +2,10 @@ import React from "react";
 import "./Services.css";
 
 import useServices from "../../Hooks/useServices";
+import { useAuthState } from "react-firebase-hooks/auth";
+import auth from "../../Firebase/firebase.init";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 const Services = () => {
   const [services] = useServices();
   // console.log('first, services', services)
@@ -22,7 +26,19 @@ const Services = () => {
 export default Services;
 
 const ShowServices = ({ service }) => {
-  const { serviceName, projectDetails, image, price } = service;
+  const [user] = useAuthState(auth)
+  const { _id, serviceName, projectDetails, image, price } = service;
+  const navigate = useNavigate();
+  const handleOrder = (id) =>{
+    if(!user){
+      Swal.fire({
+        title: 'Please login first',
+        icon: 'error'
+      })
+    } else{
+      navigate(`/dashboard/order/${id}`)
+    }
+  }
   return (
     <>
       <div className="card w-full shadow-xl border rounded-none">
@@ -38,6 +54,12 @@ const ShowServices = ({ service }) => {
           <p className="text-md font-sans text-center text-gray-500">
             {projectDetails.slice(0, 250)}...
           </p>
+          <p className="text-md font-sans text-center text-gray-900 font-semibold">
+            Price : ${price}
+          </p>
+          <div className="card-actions justify-end">
+            <button className="btn btn-accent text-primary" onClick={() =>handleOrder(_id)}>Order Now</button>
+          </div>
         </div>
       </div>
     </>

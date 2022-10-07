@@ -12,9 +12,6 @@ const PaymentHistory = () => {
   const filterEmailData = orders.filter(
     (order) => order.email === user?.email && order.paid === true
   );
-  if (loading) {
-    return <Loader />;
-  }
 
   return (
     <>
@@ -53,6 +50,7 @@ export default PaymentHistory;
 
 const ShowPaymentHistory = ({ history }) => {
   const { _id, paid, price, serviceName, transactionId, email } = history;
+
   return (
     <>
       <tr>

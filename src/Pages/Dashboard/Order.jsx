@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import auth from "../../Firebase/firebase.init";
 
@@ -12,6 +13,23 @@ const Order = () => {
     watch,
     formState: { errors },
   } = useForm();
+  const { id } = useParams();
+  const [getService, setGetService] = useState([]);
+  useEffect(() => {
+    const url = `http://localhost:5000/services/${id}`;
+    fetch(url, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log("services id data", data);
+        setGetService(data);
+      });
+  }, [id]);
+
   const onSubmit = async (data, e) => {
     // console.log(data);
 
@@ -36,6 +54,7 @@ const Order = () => {
         e.target.reset();
       });
   };
+
   return (
     <>
       <div className="container mx-auto px-4">
@@ -80,26 +99,38 @@ const Order = () => {
 
             {/* service name */}
 
-            <div className="form-control w-full">
-              <input
-                type="text"
-                placeholder="Service Name / Title*"
-                className="input input-bordered input-secondary w-full font-mono"
-                {...register("serviceName", {
-                  required: {
-                    value: true,
-                    message: "Service Name / Title is Required",
-                  },
-                })}
-              />
-              <label className="label my-1 py-0">
-                {errors.serviceName?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
-                    {errors.serviceName.message}
-                  </span>
-                )}
-              </label>
-            </div>
+            {getService?.serviceName ? (
+              <div className="form-control w-full">
+                <input
+                  type="text"
+                  placeholder="Service Name / Title*"
+                  className="input input-bordered input-secondary w-full font-mono"
+                  {...register("serviceName")}
+                  defaultValue={getService?.serviceName}
+                />
+              </div>
+            ) : (
+              <div className="form-control w-full">
+                <input
+                  type="text"
+                  placeholder="Service Name / Title*"
+                  className="input input-bordered input-secondary w-full font-mono"
+                  {...register("serviceName", {
+                    required: {
+                      value: true,
+                      message: "Service Name / Title is Required",
+                    },
+                  })}
+                />
+                <label className="label my-1 py-0">
+                  {errors.serviceName?.type === "required" && (
+                    <span className="label-text-alt text-red-500 font-mono">
+                      {errors.serviceName.message}
+                    </span>
+                  )}
+                </label>
+              </div>
+            )}
 
             {/* upload project file */}
 
@@ -148,26 +179,40 @@ const Order = () => {
 
             {/* price */}
 
-            <div className="form-control w-full">
-              <input
-                type="number"
-                placeholder="$ Price*"
-                className="input input-bordered input-secondary w-full font-mono"
-                {...register("price", {
-                  required: {
-                    value: true,
-                    message: "Price is Required",
-                  },
-                })}
-              />
-              <label className="label my-1 py-0">
-                {errors.price?.type === "required" && (
-                  <span className="label-text-alt text-red-500 font-mono">
-                    {errors.price.message}
-                  </span>
-                )}
-              </label>
-            </div>
+            {getService?.price ? (
+              <div className="form-control w-full">
+                <input
+                  type="text"
+                  placeholder="$ Price*"
+                  className="input input-bordered input-secondary w-full font-mono"
+                  {...register("price")}
+                  defaultValue={getService?.price}
+                />
+              </div>
+            ) : (
+              <div className="form-control w-full">
+                <input
+                  type="number"
+                  placeholder="$ Price*"
+                  className="input input-bordered input-secondary w-full font-mono"
+                  {...register("price", {
+                    required: {
+                      value: true,
+                      message: "Price is Required",
+                    },
+                  })}
+                />
+                <label className="label my-1 py-0">
+                  {errors.price?.type === "required" && (
+                    <span className="label-text-alt text-red-500 font-mono">
+                      {errors.price.message}
+                    </span>
+                  )}
+                </label>
+              </div>
+            )}
+
+
           </div>
           <div className="form-control w-full">
             <input

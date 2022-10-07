@@ -21,9 +21,6 @@ const DashboardSidebar = ({ children }) => {
       {!admin && (
         <>
           <li className="text-primary my-1 font-semibold font-serif">
-            <NavLink to="/dashboard/order">Give Order</NavLink>
-          </li>
-          <li className="text-primary my-1 font-semibold font-serif">
             <NavLink to="/dashboard/service-list">Service List</NavLink>
           </li>
           <li className="text-primary my-1 font-semibold font-serif">
